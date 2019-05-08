@@ -17,7 +17,7 @@ namespace MovieApp.MvcUI.Controllers
 
         public IActionResult Index()
         {
-            return View(_commentService.GetList());
+            return View();
         }
     }
 }
