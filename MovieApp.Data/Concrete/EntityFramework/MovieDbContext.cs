@@ -8,12 +8,16 @@ namespace MovieApp.Data.Concrete.EntityFramework
 {
     public class MovieDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public MovieDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Server=172.16.71.10\BOSDB;Database=IPSDB; User Id = safayilmaz; Password = HjauT7855!agTY;");
         }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=MovieApp;Trusted_Connection=True;MultipleActiveResultSets=true;");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

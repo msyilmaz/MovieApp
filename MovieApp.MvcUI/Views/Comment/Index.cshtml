@@ -1,0 +1,33 @@
+﻿@model CommentsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Content</th>
+            <th scope="col">BlogId</th>
+            <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Comments)
+        {
+            <tr>
+
+                <td>@item.Content</td>
+                <td>@item.BlogId</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>

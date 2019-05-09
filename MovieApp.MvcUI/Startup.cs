@@ -7,8 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MovieApp.Business.Abstract;
+using MovieApp.Business.Concrete;
+using MovieApp.Core.Data;
+using MovieApp.Core.Data.EntityFramework;
+using MovieApp.Data.Abstract;
+using MovieApp.Data.Concrete.EntityFramework;
 
 namespace MovieApp.MvcUI
 {
@@ -30,6 +37,17 @@ namespace MovieApp.MvcUI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<DbContext, MovieDbContext>();
+            services.AddScoped(typeof(IEntityRepository<>),typeof(efRepositoryBase<>));
+
+            services.AddTransient<IUserService, UserManager>();
+            services.AddTransient<IUserDal, efUserDal>();
+
+            services.AddTransient<ICommentDal, efCommentDal>();
+            services.AddTransient<ICommentService, CommentManager>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
