@@ -41,10 +41,13 @@ namespace MovieApp.MvcUI
             services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<DbContext, MovieDbContext>();
+            services.AddScoped(typeof(IEntityRepository<>),typeof(efRepositoryBase<>));
+
             services.AddTransient<IUserService, UserManager>();
             services.AddTransient<IUserDal, efUserDal>();
-            //services.AddTransient<ICommentDal, efCommentDal>();
-            //services.AddTransient<ICommentService, CommentManager>();
+
+            services.AddTransient<ICommentDal, efCommentDal>();
+            services.AddTransient<ICommentService, CommentManager>();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

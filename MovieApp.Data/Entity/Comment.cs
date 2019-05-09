@@ -8,8 +8,10 @@ namespace MovieApp.Data.Entity
     public class Comment : IEntity
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Comments { get; set; }
+        public int UserId { get; set; }
+        public string Content { get; set; }
         public DateTime CommentTime { get; set; }
+        public int BlogId { get; set; }
     }
 }
+
