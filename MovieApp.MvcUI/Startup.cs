@@ -38,10 +38,10 @@ namespace MovieApp.MvcUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MovieApp.Data")));
 
             services.AddTransient<DbContext, MovieDbContext>();
-            services.AddScoped(typeof(IEntityRepository<>),typeof(efRepositoryBase<>));
+            services.AddScoped(typeof(IEntityRepository<>), typeof(efRepositoryBase<>));
 
             services.AddTransient<IUserService, UserManager>();
             services.AddTransient<IUserDal, efUserDal>();

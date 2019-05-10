@@ -26,6 +26,18 @@ namespace MovieApp.MvcUI.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(CommentViewModel viewModel)
+        {
+            _commentService.Add(viewModel.Comment);
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Details(int id)
         {
             if (id == 0)
