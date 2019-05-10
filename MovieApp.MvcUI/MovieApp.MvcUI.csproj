@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MovieApp.Business\MovieApp.Business.csproj" />
+    <ProjectReference Include="..\MovieApp.Core\MovieApp.Core.csproj" />
     <ProjectReference Include="..\MovieApp.Data\MovieApp.Data.csproj" />
   </ItemGroup>
 
