@@ -26,7 +26,8 @@ namespace MovieApp.Business.Concrete
             {
                 UserId = commentDto.UserId,
                 Content = commentDto.Content,
-                BlogId = commentDto.BlogId
+                BlogId = commentDto.BlogId,
+                CommentTime = DateTime.Now
             };
             _commentDal.Add(comment);
             _commentDal.Save();

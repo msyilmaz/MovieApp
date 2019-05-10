@@ -10,8 +10,8 @@ using MovieApp.Data.Concrete.EntityFramework;
 namespace MovieApp.Data.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20190509202810_Initialize")]
-    partial class Initialize
+    [Migration("20190510124954_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
