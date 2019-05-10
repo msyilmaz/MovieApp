@@ -49,6 +49,11 @@ namespace MovieApp.MvcUI
             services.AddTransient<ICommentDal, efCommentDal>();
             services.AddTransient<ICommentService, CommentManager>();
 
+            services.AddTransient<IBlogDal, efBlogDal>();
+            services.AddTransient<IBlogService, BlogManager>();
+
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
