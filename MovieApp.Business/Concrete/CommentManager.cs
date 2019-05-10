@@ -30,7 +30,7 @@ namespace MovieApp.Business.Concrete
                 CommentTime = DateTime.Now
             };
             _commentDal.Add(comment);
-           // _commentDal.Save();
+            _commentDal.Save();
         }
 
         public void DeleteComment(int id)
