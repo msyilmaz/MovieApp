@@ -1,0 +1,37 @@
+﻿@model MovieApp.Data.ViewModel.MoviesViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Director</th>
+            <th>Cast</th>
+            <th>Type</th>
+            <th>ReleaseDate</th>
+            <th>Score</th>
+            <th>Action</th>
+        </tr>     
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Director</td>
+                <td>@item.Cast</td>
+                <td>@item.Type</td>
+                <td>@item.ReleaseDate</td>
+                <td>@item.Score</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@item.Id">Detail</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

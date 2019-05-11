@@ -6,8 +6,8 @@ using System.Text;
 
 namespace MovieApp.Data.Abstract
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IMovieDal : IEntityRepository<Movie>
     {
-        
+
     }
 }
