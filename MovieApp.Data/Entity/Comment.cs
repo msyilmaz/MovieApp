@@ -13,6 +13,7 @@ namespace MovieApp.Data.Entity
         public string Content { get; set; }
         public DateTime CommentTime { get; set; }
         public int BlogId { get; set; }
+        public bool Status { get; set; }
 
         public Blog Blog { get; set; }
     }
