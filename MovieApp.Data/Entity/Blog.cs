@@ -11,7 +11,7 @@ namespace MovieApp.Data.Entity
         public string Title { get; set; }
         public string Content { get; set; }
         public int CommendId { get; set; }
-        //public virtual List<Comment>  Comments { get; set; }
+        public virtual List<Comment>  Comments { get; set; }
         public string Tags { get; set; }
         public bool Status { get; set; }
         public DateTime CreateTime { get; set; }

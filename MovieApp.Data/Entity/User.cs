@@ -14,5 +14,6 @@ namespace MovieApp.Data.Entity
         public DateTime BirthDate { get; set; }
         public bool Status { get; set; }
         public int RoleId { get; set; }
+
     }
 }
