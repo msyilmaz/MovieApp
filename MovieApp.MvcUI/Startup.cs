@@ -52,6 +52,9 @@ namespace MovieApp.MvcUI
             services.AddTransient<IBlogDal, efBlogDal>();
             services.AddTransient<IBlogService, BlogManager>();
 
+            services.AddTransient<ICastDal, efCastDal>();
+            services.AddTransient<ICastService, CastManager>();
+
 
 
 

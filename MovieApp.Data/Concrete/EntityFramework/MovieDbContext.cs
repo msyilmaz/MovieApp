@@ -14,6 +14,7 @@ namespace MovieApp.Data.Concrete.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Cast> Casts { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
