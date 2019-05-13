@@ -14,6 +14,7 @@ using MovieApp.Business.Abstract;
 using MovieApp.Business.Concrete;
 using MovieApp.Core.Data;
 using MovieApp.Core.Data.EntityFramework;
+using MovieApp.Core.Data.UnitOfWork;
 using MovieApp.Data.Abstract;
 using MovieApp.Data.Concrete.EntityFramework;
 
