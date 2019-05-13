@@ -31,22 +31,21 @@ namespace MovieApp.Business.Concrete
                 BlogId = commentDto.BlogId,
                 CommentTime = DateTime.Now
             };
-            _unitOfWork.commentDal.Add(comment);
-            _unitOfWork.commentDal.Save();
+
+            _unitOfWork.GetRepository<Comment>().Add(comment);
+            _unitOfWork.SaveChanges();
         }
 
         public void DeleteComment(int id)
         {
-
-            var entity = _unitOfWork.commentDal.Get(p => p.Id == id);
-
-            _unitOfWork.commentDal.Delete(entity);
-            _unitOfWork.commentDal.Save();
+            var comment = _unitOfWork.GetRepository<Comment>().Get(p => p.Id == id);
+            _unitOfWork.GetRepository<Comment>().Delete(comment);
+            _unitOfWork.SaveChanges();
         }
 
         public CommentDto GetComment(Expression<Func<Comment, bool>> condition)
         {
-            var comment = _unitOfWork.commentDal.Get(condition);
+            var comment = _unitOfWork.GetRepository<Comment>().Get(condition);
             var result = new CommentDto()
             {
                 BlogId = comment.BlogId,
@@ -61,7 +60,7 @@ namespace MovieApp.Business.Concrete
 
         public CommentDto GetCommentByUserId(int UserId)
         {
-            var comment = _unitOfWork.commentDal.Get(p => p.Id == UserId);
+            var comment = _unitOfWork.GetRepository<Comment>().Get(p => p.UserId == UserId);
             var result = new CommentDto()
             {
                 UserId = comment.UserId,
@@ -72,7 +71,7 @@ namespace MovieApp.Business.Concrete
 
         public List<CommentDto> GetComments(Expression<Func<Comment, bool>> condition)
         {
-            var comments = _unitOfWork.commentDal.GetList(condition);
+            var comments = _unitOfWork.GetRepository<Comment>().GetList(condition);
 
             var result = new List<CommentDto>();
 
@@ -101,9 +100,8 @@ namespace MovieApp.Business.Concrete
                 BlogId = comment.BlogId,
                 UserId = comment.UserId
             };
-
-            _unitOfWork.commentDal.Update(entity);
-            _unitOfWork.commentDal.Save();
+            _unitOfWork.GetRepository<Comment>().Update(entity);
+            _unitOfWork.SaveChanges();
         }
     }
 }
