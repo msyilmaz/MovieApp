@@ -88,10 +88,10 @@ namespace MovieApp.Business.Concrete
             var blog = new Blog()
             {
                 Id = blogDto.Id,
-                Title = blogDto.Title,
-                Content = blogDto.Content,
-                Tags = blogDto.Tags,
-                UpdateTime = blogDto.UpdateTime,
+                Title=blogDto.Title,
+                Content=blogDto.Content,
+                Tags=blogDto.Tags,
+                UpdateTime=blogDto.UpdateTime,
                 UserId = blogDto.UserId,
                 Status = blogDto.Status
 
