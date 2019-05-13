@@ -15,9 +15,11 @@ namespace MovieApp.Business.Concrete
     public class CommentManager : ICommentService
     {
         private readonly ICommentDal _commentDal;
-        public CommentManager(ICommentDal commentDal)
+        private readonly IUnitOfWork _unitOfWork;
+        public CommentManager(ICommentDal commentDal, IUnitOfWork unitOfWork)
         {
             _commentDal = commentDal;
+            _unitOfWork = unitOfWork;
         }
 
         public void Add(CommentDto commentDto)
@@ -29,22 +31,22 @@ namespace MovieApp.Business.Concrete
                 BlogId = commentDto.BlogId,
                 CommentTime = DateTime.Now
             };
-            _commentDal.Add(comment);
-            _commentDal.Save();
+            _unitOfWork.commentDal.Add(comment);
+            _unitOfWork.commentDal.Save();
         }
 
         public void DeleteComment(int id)
         {
 
-            var entity = _commentDal.Get(p => p.Id == id);
+            var entity = _unitOfWork.commentDal.Get(p => p.Id == id);
 
-            _commentDal.Delete(entity);
-            _commentDal.Save();
+            _unitOfWork.commentDal.Delete(entity);
+            _unitOfWork.commentDal.Save();
         }
 
         public CommentDto GetComment(Expression<Func<Comment, bool>> condition)
         {
-            var comment = _commentDal.Get(condition);
+            var comment = _unitOfWork.commentDal.Get(condition);
             var result = new CommentDto()
             {
                 BlogId = comment.BlogId,
@@ -59,7 +61,7 @@ namespace MovieApp.Business.Concrete
 
         public CommentDto GetCommentByUserId(int UserId)
         {
-            var comment = _commentDal.Get(p => p.Id == UserId);
+            var comment = _unitOfWork.commentDal.Get(p => p.Id == UserId);
             var result = new CommentDto()
             {
                 UserId = comment.UserId,
@@ -70,7 +72,7 @@ namespace MovieApp.Business.Concrete
 
         public List<CommentDto> GetComments(Expression<Func<Comment, bool>> condition)
         {
-            var comments = _commentDal.GetList(condition);
+            var comments = _unitOfWork.commentDal.GetList(condition);
 
             var result = new List<CommentDto>();
 
@@ -100,8 +102,8 @@ namespace MovieApp.Business.Concrete
                 UserId = comment.UserId
             };
 
-            _commentDal.Update(entity);
-            _commentDal.Save();
+            _unitOfWork.commentDal.Update(entity);
+            _unitOfWork.commentDal.Save();
         }
     }
 }

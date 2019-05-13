@@ -55,6 +55,8 @@ namespace MovieApp.MvcUI
             services.AddTransient<ICastDal, efCastDal>();
             services.AddTransient<ICastService, CastManager>();
 
+            services.AddTransient<IUnitOfWork, efUnitOfWork>();
+
 
 
 
