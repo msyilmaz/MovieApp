@@ -15,6 +15,7 @@ namespace MovieApp.Business.Concrete
     public class CommentManager : ICommentService
     {
         private readonly ICommentDal _commentDal;
+        private readonly IUnitOfWork _unitOfWork;
         public CommentManager(ICommentDal commentDal)
         {
             _commentDal = commentDal;
