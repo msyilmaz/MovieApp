@@ -16,8 +16,6 @@ namespace MovieApp.MvcUI.Controllers
             _commentService = commentService;
         }
 
-
-
         public IActionResult Index()
         {
             var userId = 1;
