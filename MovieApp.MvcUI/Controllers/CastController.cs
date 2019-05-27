@@ -17,7 +17,7 @@ namespace MovieApp.MvcUI.Controllers
         }
         public IActionResult Index()
         {
-            var Id = 1;
+            var Id = 2;
             var viewModel = new CastsViewModel();
             viewModel.Casts = _castService.GetCasts(p => p.Id == Id);
             return View(viewModel);

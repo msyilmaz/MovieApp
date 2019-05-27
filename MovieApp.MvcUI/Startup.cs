@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +18,8 @@ using MovieApp.Core.Data;
 using MovieApp.Core.Data.EntityFramework;
 using MovieApp.Data.Abstract;
 using MovieApp.Data.Concrete.EntityFramework;
+using MovieApp.Data.Entity;
+using MovieApp.MvcUI.Entities;
 
 namespace MovieApp.MvcUI
 {
@@ -55,7 +59,10 @@ namespace MovieApp.MvcUI
             services.AddTransient<ICastDal, efCastDal>();
             services.AddTransient<ICastService, CastManager>();
 
-
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=localhost;Database=MovieApp;Trusted_Connection=True;MultipleActiveResultSets=true"));
+            services.AddIdentity<CustomIdentityUser, CustomIdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -70,6 +77,7 @@ namespace MovieApp.MvcUI
             }
             else
             {
+                
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -78,6 +86,7 @@ namespace MovieApp.MvcUI
 
 
 
+            app.UseIdentity();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
