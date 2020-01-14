@@ -2,6 +2,7 @@
 using MovieApp.Data.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace MovieApp.Business.Abstract
@@ -9,6 +10,11 @@ namespace MovieApp.Business.Abstract
     public interface ICommentService
     {
         CommentDto GetCommentByUserName(string UserName);
-
+        CommentDto GetComment(Expression<Func<Comment, bool>> condition);
+        CommentDto GetCommentByUserId(int UserId);
+        void Add(CommentDto commentDto);
+        List<CommentDto> GetComments(Expression<Func<Comment, bool>> condition);
+        void UpdateComment(CommentDto comment);
+        void DeleteComment(int id); 
     }
 }

@@ -16,11 +16,80 @@ namespace MovieApp.MvcUI.Controllers
             _commentService = commentService;
         }
 
+
+
         public IActionResult Index()
         {
-            var viewModel = new CommentViewModel();
-            viewModel.Comment = _commentService.GetCommentByUserName("Sefa");
+        //     var viewModel = new CommentViewModel();
+        //     viewModel.Comment = _commentService.GetCommentByUserName("Sefa");
+        //     return View(viewModel);
+
+            var userId = 1;
+            var viewModel = new CommentsViewModel();
+
+            viewModel.Comments = _commentService.GetComments(p => p.UserId == userId);
+
             return View(viewModel);
+        }
+
+       
+        [HttpPost]
+        public IActionResult Create(CommentViewModel viewModel)
+        {
+            _commentService.Add(viewModel.Comment);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new CommentViewModel();
+
+            viewModel.Comment = _commentService.GetComment(p => p.Id == id);
+
+            return View(viewModel);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new CommentViewModel();
+
+            viewModel.Comment = _commentService.GetComment(p => p.Id == id);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CommentViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _commentService.UpdateComment(viewModel.Comment);
+            }
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+
+            _commentService.DeleteComment(id);
+
+            return RedirectToAction("Index");
         }
     }
 }

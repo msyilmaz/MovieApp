@@ -1,32 +1,31 @@
-
-@model MovieApp.Data.ViewModel.CommentViewModel  
-
+﻿@model CastsViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-    <br />
+<br />
 
 <a asp-action="Create">Create</a>
 
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Content</th>
-            <th scope="col">BlogId</th>
-            <th scope="col">Action</th>
+            <th scope="col">FullName</th>
+            <th scope="col">RoleName</th>
+            <th scope="col">BirthDay</th>
 
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Comments)
+        @foreach (var item in Model.Casts)
         {
             <tr>
 
-                <td>@item.Content</td>
-                <td>@item.BlogId</td>
+                <td>@item.FullName</td>
+                <td>@item.RoleName</td>
+                <td>@item.BirthDay</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                   
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
@@ -37,3 +36,5 @@
 
     </tbody>
 </table>
+
+

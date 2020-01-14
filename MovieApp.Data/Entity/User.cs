@@ -19,6 +19,7 @@ namespace MovieApp.Data.Entity
         public bool Status { get; set; }
         public int RoleId { get; set; }
 
+
         public virtual List<Comment> Comments { get; set; }
     }
 }

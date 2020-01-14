@@ -30,6 +30,7 @@ namespace MovieApp.Core.Data.EntityFramework
         {
             var activeEntity = _context.Entry(entity);
             activeEntity.State = EntityState.Deleted;
+            
         }
         public TEntity Get(Expression<Func<TEntity, bool>> condition)
         {

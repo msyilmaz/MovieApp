@@ -1,0 +1,25 @@
+﻿@model CastViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <div class="row">
+        <form asp-action="Create" method="post">
+
+            <div class="form-group">
+                <label asp-for="cast.FullName" class="form-label"></label>
+                <input type="text" asp-for="cast.FullName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="cast.RoleName" class="form-label"></label>
+                <input type="text" asp-for="cast.RoleName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="cast.BirthDay" class="form-label"></label>
+                <input type="text" asp-for="cast.BirthDay" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>

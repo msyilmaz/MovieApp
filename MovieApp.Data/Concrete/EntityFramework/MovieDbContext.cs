@@ -13,10 +13,12 @@ namespace MovieApp.Data.Concrete.EntityFramework
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Cast> Casts { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer(@"Server=172.16.71.10\BOSDB;Database=IPSDB; User Id = safayilmaz; Password = HjauT7855!agTY;");
+        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\\MSSQLLocalDB;Database=MovieApp;Trusted_Connection=True;MultipleActiveResultSets=true;");
         //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
