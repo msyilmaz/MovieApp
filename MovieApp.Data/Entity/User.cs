@@ -7,6 +7,10 @@ namespace MovieApp.Data.Entity
 {
     public class User : IEntity
     {
+        public User()
+        {
+            Comments = new List<Comment>();
+        }
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
@@ -14,5 +18,7 @@ namespace MovieApp.Data.Entity
         public DateTime BirthDate { get; set; }
         public bool Status { get; set; }
         public int RoleId { get; set; }
+
+        public virtual List<Comment> Comments { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MovieApp.Business.Abstract;
+using MovieApp.Data.ViewModel;
 
 namespace MovieApp.MvcUI.Controllers
 {
@@ -17,7 +18,9 @@ namespace MovieApp.MvcUI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new CommentViewModel();
+            viewModel.Comment = _commentService.GetCommentByUserName("Sefa");
+            return View(viewModel);
         }
     }
 }

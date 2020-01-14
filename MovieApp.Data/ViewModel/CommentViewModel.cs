@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MovieApp.Data.ViewModel
 {
-    class CommentViewModel
+    public class CommentViewModel
     {
         public CommentDto Comment { get; set; }
     }

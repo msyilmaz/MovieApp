@@ -41,6 +41,7 @@ namespace MovieApp.Core.Data.EntityFramework
             var list = condition == null ?
                 _context.Set<TEntity>().ToList() :
                 _context.Set<TEntity>().Where(condition).ToList();
+            
 
             return list;
         }

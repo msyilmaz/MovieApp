@@ -20,9 +20,17 @@ namespace MovieApp.Business.Concrete
             _commentDal = commentDal;
         }
 
-        public Comment GetCommentByUserName(string UserName)
+        public CommentDto GetCommentByUserName(string UserName)
         {
-            return _commentDal.Get(p => p.UserName == UserName);
+            var comment =  _commentDal.Get(p => p.UserId == UserName);
+            var result = new CommentDto()
+            {
+                Comment = comment.Comments,
+                UserName = comment.UserId
+            };
+
+            return result;
+
         }
     }
 }

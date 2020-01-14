@@ -8,7 +8,7 @@ namespace MovieApp.Business.Abstract
 {
     public interface ICommentService
     {
-        Comment GetCommentByUserName(string UserName);
+        CommentDto GetCommentByUserName(string UserName);
 
     }
 }
